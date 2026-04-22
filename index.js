@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 
-const hostname = process.env.hostname;
-const port = process.env.port;
+const hostname = '127.0.0.1';
+const port = 3000;
 
 const server = createServer();
 
