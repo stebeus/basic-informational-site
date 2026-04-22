@@ -26,12 +26,12 @@ server.on('request', ({ url }, response) => {
     return;
   }
 
-  if (url === 'about') {
+  if (url === '/about') {
     loadPage(response, 'pages/about');
     return;
   }
 
-  if (url === 'contact') {
+  if (url === '/contact') {
     loadPage(response, 'pages/contact');
     return;
   }
