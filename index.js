@@ -19,7 +19,7 @@ app.get('/contact', (_, response) => {
   response.sendFile('/pages/contact.html', root);
 });
 
-app.get('/*not-found', (_, response) => {
+app.get('/*path', (_, response) => {
   const notFound = 404;
   response.status(notFound).sendFile('/pages/404.html', root);
 });
