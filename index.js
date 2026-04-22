@@ -1,44 +1,30 @@
-import { readFileSync } from 'node:fs';
-import { createServer } from 'node:http';
+import express from 'express';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
 
-const server = createServer();
+const PORT = 3000;
 
-const notFoundPage = 'pages/404';
+const dirname = import.meta.dirname;
+const root = { root: dirname };
 
-function loadPage(response, path = notFoundPage) {
-  const success = 200;
-  const notFound = 404;
-
-  const statusCode = path === notFoundPage ? notFound : success;
-  response.writeHead(statusCode, { 'Content-Type': 'text/html' });
-
-  const html = readFileSync(`${path}.html`);
-  response.end(html);
-}
-
-server.on('request', ({ url }, response) => {
-  if (url === '/') {
-    loadPage(response, 'pages/index');
-    return;
-  }
-
-  if (url === '/about') {
-    loadPage(response, 'pages/about');
-    return;
-  }
-
-  if (url === '/contact') {
-    loadPage(response, 'pages/contact');
-    return;
-  }
-
-  console.error('404: Not Found');
-  loadPage(response);
+app.get('/', (_, response) => {
+  response.sendFile('/pages/index.html', root);
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at ${hostname}:${port}`);
+app.get('/about', (_, response) => {
+  response.sendFile('/pages/about.html', root);
+});
+
+app.get('/contact', (_, response) => {
+  response.sendFile('/pages/contact.html', root);
+});
+
+app.get('/*not-found', (_, response) => {
+  const notFound = 404;
+  response.status(notFound).sendFile('/pages/404.html', root);
+});
+
+app.listen(PORT, (error) => {
+  if (error) throw error;
+  console.log(`Server running at port ${PORT}`);
 });
