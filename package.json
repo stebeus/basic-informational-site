@@ -1,0 +1,11 @@
+{
+  "name": "basic-informational-site",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js --watch"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
