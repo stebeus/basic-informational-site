@@ -12,7 +12,7 @@ function loadPage(response, path = notFoundPage) {
   const success = 200;
   const notFound = 400;
 
-  response.writeHead(path === notFound ? notFound : success, {
+  response.writeHead(path === notFoundPage ? notFound : success, {
     'Content-Type': 'text/html',
   });
 
