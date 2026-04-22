@@ -39,3 +39,7 @@ server.on('request', ({ url }, response) => {
   console.error('404: Not Found');
   loadPage(response);
 });
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at ${hostname}:${port}`);
+});
