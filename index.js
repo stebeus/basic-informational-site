@@ -12,9 +12,8 @@ function loadPage(response, path = notFoundPage) {
   const success = 200;
   const notFound = 404;
 
-  response.writeHead(path === notFoundPage ? notFound : success, {
-    'Content-Type': 'text/html',
-  });
+  const statusCode = path === notFoundPage ? notFound : success;
+  response.writeHead(statusCode, { 'Content-Type': 'text/html' });
 
   const html = readFileSync(`${path}.html`);
   response.end(html);
