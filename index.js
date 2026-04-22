@@ -22,7 +22,7 @@ function loadPage(response, path = notFoundPage) {
 
 server.on('request', ({ url }, response) => {
   if (url === '/') {
-    loadPage(response, 'index');
+    loadPage(response, 'pages/index');
     return;
   }
 
