@@ -10,7 +10,7 @@ const notFoundPage = 'pages/404';
 
 function loadPage(response, path = notFoundPage) {
   const success = 200;
-  const notFound = 400;
+  const notFound = 404;
 
   response.writeHead(path === notFoundPage ? notFound : success, {
     'Content-Type': 'text/html',
